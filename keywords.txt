@@ -5,7 +5,7 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-
+MTController	KEYWORDS1
 
 #######################################
 # Methods and Functions (KEYWORD2)
