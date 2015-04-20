@@ -28,6 +28,15 @@
  * @version 0.1
  */
 
+/**
+ * @section About Servos
+ *
+ * @n The Servo 1/2/3/4 speed bytes allow the rate, at which changes to the
+ * servo positions are made, to be controlled. If the value is set to zero,
+ * changes to the servo position is immediate. If the value is non-zero,
+ * changes will occur at a rate equal 10*value milliseconds per step.
+ */
+
 
 #ifndef _MATBOTICS_H_
 #define _MATBOTICS_H_
@@ -87,9 +96,44 @@
 class MTController
 {
   private:
+    bool __servos_state;
+    int __battery_level;
   
   public:
+    /**
+     * Create MTController object 
+     */
+    MTController();
     
+    /**
+     * Get battery level
+     * @n The Battery level returns the current battery voltage in units of 40mV.
+     * param[out] battery level (TODO)
+     */
+    int BatteryLevel();
+    
+    /** 
+     * enable servomotors
+     */
+    void EnableServos();
+    
+    /**
+     * Set speed of the servo one
+     * @param[in] speed the speed to set
+     */
+    void ServoOneSpeed( int servo_speed );
+    
+    /**
+     * Set the angle of the servo one
+     * @param[in] angle angle to reach
+     */
+    void ServoOneAngle( int angle);
+    
+    /**
+     * Set the speed of the motor, zero (0) causes the motor to stop.
+     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     */
+    void MotorOneSpeed( int motor_speed );
 }
 
 

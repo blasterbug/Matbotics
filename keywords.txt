@@ -1,15 +1,26 @@
 #######################################
-# Syntax Coloring Map For RTC
+# Syntax Coloring Map For Matbotics
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-MTController	KEYWORDS1
+MTController	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
+MTController	KEYWORD2
+BatteryLevel	KEYWORD2
+EnableServos	KEYWORD2
+ServoOneSpeed	KEYWORD2
+ServoOneAngle 	KEYWORD2
+ServoTwoSpeed	KEYWORD2
+ServoTwoAngle 	KEYWORD2
+ServoThreeSpeed	KEYWORD2
+ServoThreeAngle	KEYWORD2
+ServoFourSpeed	KEYWORD2
+ServoFourAngle 	KEYWORD2
 
 
 #######################################
