@@ -8,7 +8,7 @@ The library is under **heavy** development!
 
 Open a terminal and run :
 
-    $ cd <ArduinoDirectory>/libraries
+    $ cd <UserDirectory>/Arduino/libraries
     $ git clone https://github.com/blasterbug/Matbotics.git
  
 Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino libraries menu.
