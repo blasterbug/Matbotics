@@ -95,25 +95,32 @@
 #define CTRL_MTR4_MODE 0x75
 
 /**
+ * motor modes
+ */
+enum MOTOR_MODES {
+    MTR_MODE_FLOAT = 0,
+    MTR_MODE_BRAKE,
+    MTR_MODE_SPEED,
+    MTR_MODE_SLEW
+};
+
+/**
  * MTController
  * object to encapsulate Matrix Robotic System controller control
  */
 class MTController
 {
-private:
-    bool __servos_state;
-    int __battery_level;
-
+    public:
     
-public:
     /**
-     * Create MTController object
-     */
+    * Create MTController object
+    */
     MTController();
-    
+        
     /**
      * Get battery level
-     * @n The Battery level returns the current battery voltage in units of 40mV.
+     * @n The Battery level returns the current battery voltage in units 
+     * of 40mV.
      * param[out] battery level (TODO)
      */
     int batteryLevel();
@@ -136,14 +143,69 @@ public:
     void servoOneAngle( int angle );
     
     /**
+     * Set speed of the servo two
+     * @param[in] speed the speed to set
+     */
+    void servoTwoSpeed( int servo_speed );
+    
+    /**
+     * Set the angle of the servo two
+     * @param[in] angle angle to reach
+     */
+    void servoTwoAngle( int angle );
+    
+    /**
+     * Set speed of the servo three
+     * @param[in] speed the speed to set
+     */
+    void servoThreeSpeed( int servo_speed );
+    
+    /**
+     * Set the angle of the servo three
+     * @param[in] angle angle to reach
+     */
+    void servoThreeAngle( int angle );
+    
+    /**
+     * Set speed of the servo four
+     * @param[in] speed the speed to set
+     */
+    void servoFourSpeed( int servo_speed );
+    
+    /**
+     * Set the angle of the servo four
+     * @param[in] angle angle to reach
+     */
+    void servoFourAngle( int angle );
+    
+    /**
      * Set the speed of the motor one, zero (0) causes the motor to stop.
      * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
      */
     void motorOneSpeed( int motor_speed );
     
     /**
-     * set the speed of the motor two
+     * get the position of the motor one
+     * @param[out] int Value of the current motor encoder value from 0 to 250
      */
+    int motorOnePosition();
+    
+    /**
+     * Set the position of the motor one encoder , fi it is in *slew* mode.
+     * param[in] target Position to reach
+     */
+    void motorOneReach( int target );
+    
+    /**
+     * Set the motor one mode 
+     * @param[in] mode the mode for the motor one
+     */
+    void motorOneMode( MOTOR_MODES mode );
+    
+
+    private:
+        uint8_t __servos_state;
+        int __battery_level;
 };
 
 

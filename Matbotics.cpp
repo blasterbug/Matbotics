@@ -34,10 +34,10 @@
 // use TWI/I2C to communicate with Controller
 #include <Wire.h>
 
-#include "matbotics.h"
+#include "Matbotics.h"
 
 MTController::MTController() :
-__servos_state( false ),
+__servos_state( 0 ),
 __battery_level( -1 )
 {
     Wire.begin();
@@ -53,7 +53,7 @@ int MTController::batteryLevel()
 
 void MTController::enableServos()
 {
-    __servos_state = true;
+    __servos_state = 0xF;
     Wire.beginTransmission( CONTROLLER_ADDRESS );
     Wire.write( CTRL_SERVO_ON );
     Wire.write( 0xF ); // enable all Servos
@@ -76,11 +76,85 @@ void MTController::servoOneAngle( int angle )
     Wire.endTransmission();
 }
 
+void MTController::servoTwoSpeed( int servo_speed )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_SRV2_SPEED );
+    Wire.write( servo_speed );
+    Wire.endTransmission();
+}
+
+void MTController::servoTwoAngle( int angle )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_SRV2_TRGT );
+    Wire.write( angle );
+    Wire.endTransmission();
+}
+
+void MTController::servoThreeSpeed( int servo_speed )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_SRV3_SPEED );
+    Wire.write( servo_speed );
+    Wire.endTransmission();
+}
+
+void MTController::servoThreeAngle( int angle )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_SRV3_TRGT );
+    Wire.write( angle );
+    Wire.endTransmission();
+}
+
+void MTController::servoFourSpeed( int servo_speed )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_SRV4_SPEED );
+    Wire.write( servo_speed );
+    Wire.endTransmission();
+}
+
+void MTController::servoFourAngle( int angle )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_SRV4_TRGT );
+    Wire.write( angle );
+    Wire.endTransmission();
+}
+
+
 void MTController::motorOneSpeed( int motor_speed )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
     Wire.write( CTRL_MTR1_SPEED );
     Wire.write( motor_speed );
+    Wire.endTransmission();
+}
+
+
+int MTController::motorOnePosition()
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_MTR1_POS );
+    Wire.endTransmission();
+    return 0;
+}
+
+void MTController::motorOneReach( int target )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_MTR1_TRGT );
+    Wire.write( target ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorOneMode( MOTOR_MODES mode )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( CTRL_MTR1_MODE );
+    Wire.write( mode ) ;
     Wire.endTransmission();
 }
 

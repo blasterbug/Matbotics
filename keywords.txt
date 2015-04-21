@@ -10,7 +10,7 @@ MTController	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-# MTController	KEYWORD2
+MTController	KEYWORD2
 batteryLevel	KEYWORD2
 enableServos	KEYWORD2
 servoOneSpeed	KEYWORD2
