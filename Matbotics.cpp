@@ -31,10 +31,11 @@
 #ifndef _MATBOTICS_CPP_
 #define _MATBOTICS_CPP_
 
+#include "Matbotics.h"
+
 // use TWI/I2C to communicate with Controller
 #include <Wire.h>
 
-#include "Matbotics.h"
 
 MTController::MTController() :
 __servos_state( 0 ),
@@ -45,25 +46,44 @@ __battery_level( -1 )
 
 int MTController::batteryLevel()
 {
-    Wire.begin( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_BATT_LEVEL);
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_BATT_LEVEL);
     Wire.endTransmission();
+    Wire.requestFrom( CONTROLLER_ADDRESS, 2 );
+    /// @todo Read battery level from I2C
     return __battery_level;
+}
+
+void MTController::timeout( int time )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_TIME_OUT );
+    Wire.write( time );
+    Wire.endTransmission();
 }
 
 void MTController::enableServos()
 {
-    __servos_state = 0xF;
+    __servos_state = MTBS_USE_ALL_SERVOS;
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SERVO_ON );
-    Wire.write( 0xF ); // enable all Servos
+    Wire.write( MTBS_SERVOS_STATE );
+    Wire.write( MTBS_USE_ALL_SERVOS ); // enable all Servos
+    Wire.endTransmission();
+}
+
+void MTController::disableServos()
+{
+    __servos_state = MTBS_USE_NO_SERVO;
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_SERVOS_STATE );
+    Wire.write( MTBS_USE_NO_SERVO ); // disable all Servos
     Wire.endTransmission();
 }
 
 void MTController::servoOneSpeed( int servo_speed )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV1_SPEED );
+    Wire.write( MTBS_SRV1_SPEED );
     Wire.write( servo_speed );
     Wire.endTransmission();
 }
@@ -71,7 +91,7 @@ void MTController::servoOneSpeed( int servo_speed )
 void MTController::servoOneAngle( int angle )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV1_TRGT );
+    Wire.write( MTBS_SRV1_TRGT );
     Wire.write( angle );
     Wire.endTransmission();
 }
@@ -79,7 +99,7 @@ void MTController::servoOneAngle( int angle )
 void MTController::servoTwoSpeed( int servo_speed )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV2_SPEED );
+    Wire.write( MTBS_SRV2_SPEED );
     Wire.write( servo_speed );
     Wire.endTransmission();
 }
@@ -87,7 +107,7 @@ void MTController::servoTwoSpeed( int servo_speed )
 void MTController::servoTwoAngle( int angle )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV2_TRGT );
+    Wire.write( MTBS_SRV2_TRGT );
     Wire.write( angle );
     Wire.endTransmission();
 }
@@ -95,7 +115,7 @@ void MTController::servoTwoAngle( int angle )
 void MTController::servoThreeSpeed( int servo_speed )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV3_SPEED );
+    Wire.write( MTBS_SRV3_SPEED );
     Wire.write( servo_speed );
     Wire.endTransmission();
 }
@@ -103,7 +123,7 @@ void MTController::servoThreeSpeed( int servo_speed )
 void MTController::servoThreeAngle( int angle )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV3_TRGT );
+    Wire.write( MTBS_SRV3_TRGT );
     Wire.write( angle );
     Wire.endTransmission();
 }
@@ -111,7 +131,7 @@ void MTController::servoThreeAngle( int angle )
 void MTController::servoFourSpeed( int servo_speed )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV4_SPEED );
+    Wire.write( MTBS_SRV4_SPEED );
     Wire.write( servo_speed );
     Wire.endTransmission();
 }
@@ -119,7 +139,7 @@ void MTController::servoFourSpeed( int servo_speed )
 void MTController::servoFourAngle( int angle )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_SRV4_TRGT );
+    Wire.write( MTBS_SRV4_TRGT );
     Wire.write( angle );
     Wire.endTransmission();
 }
@@ -128,32 +148,32 @@ void MTController::servoFourAngle( int angle )
 void MTController::motorOneSpeed( int motor_speed )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_MTR1_SPEED );
+    Wire.write( MTBS_MTR1_SPEED );
     Wire.write( motor_speed );
     Wire.endTransmission();
 }
 
-
 int MTController::motorOnePosition()
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_MTR1_POS );
+    Wire.write( MTBS_MTR1_POS );
     Wire.endTransmission();
+    /// @todo Read moteur encodeur value from I2C
     return 0;
 }
 
 void MTController::motorOneReach( int target )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_MTR1_TRGT );
+    Wire.write( MTBS_MTR1_TRGT );
     Wire.write( target ) ;
     Wire.endTransmission();
 }
 
-void MTController::motorOneMode( MOTOR_MODES mode )
+void MTController::motorOneMode( MTBS_MOTOR_MODES mode )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( CTRL_MTR1_MODE );
+    Wire.write( MTBS_MTR1_MODE );
     Wire.write( mode ) ;
     Wire.endTransmission();
 }

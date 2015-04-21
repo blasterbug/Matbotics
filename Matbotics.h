@@ -31,7 +31,7 @@
 /**
  * @section About Servos
  *
- * @n The Servo 1/2/3/4 speed bytes allow the rate, at which changes to the
+ * The Servo 1/2/3/4 speed bytes allow the rate, at which changes to the
  * servo positions are made, to be controlled. If the value is set to zero,
  * changes to the servo position is immediate. If the value is non-zero,
  * changes will occur at a rate equal 10*value milliseconds per step.
@@ -42,66 +42,68 @@
 #define _MATBOTICS_H_
 
 // matbotics address
-#define CONTROLLER_ADDRESS 0x08
-
+#define CONTROLLER_ADDRESS  0x08
 // register address to write in to control motors/servos
+// for more details see MatriX Controller specification
 // controller vars
-#define CTRL_VRS 0x07
-#define CTRL_MANU 0x0F
-#define CTRL_TYPE 0x17
-#define CTRL_STATUS 0x41
-#define CTRL_TIME_OUT 0x42
-#define CTRL_BATT_LEVEL 0x43
-#define CTRL_STRT_FALG 0x44
+#define MTBS_VRS            0x07
+#define MTBS_MANU           0x0F
+#define MTBS_TYPE           0x17
+#define MTBS_STATUS         0x41
+#define MTBS_TIME_OUT       0x42
+#define MTBS_BATT_LEVEL     0x43
+#define MTBS_STRT_FALG      0x44
 // servos commands
-#define CTRL_SERVO_ON 0x45
-// Arctived all servos
+#define MTBS_SERVOS_STATE   0x45
+// actived all servos
 // Matrix Controller uses for bits to enable each one.
 //  SERVOS  1   2   3   4
 //  0xF     1   1   1   1
-#define USE_SERVOS 0xF
+#define MTBS_USE_ALL_SERVOS 0xF
+// desactived all servos
+#define MTBS_USE_NO_SERVO   0x0
 //  SERVO 1
-#define CTRL_SRV1_SPEED 0x46
-#define CTRL_SRV1_TRGT 0x47
+#define MTBS_SRV1_SPEED     0x46
+#define MTBS_SRV1_TRGT      0x47
 //  SERVO 2
-#define CTRL_SRV2_SPEED 0x48
-#define CTRL_SRV2_TRGT 0x49
+#define MTBS_SRV2_SPEED     0x48
+#define MTBS_SRV2_TRGT      0x49
 //  SERVO 3
-#define CTRL_SRV3_SPEED 0x4A
-#define CTRL_SRV3_TRGT 0x4B
+#define MTBS_SRV3_SPEED     0x4A
+#define MTBS_SRV3_TRGT      0x4B
 //  SERVO 4
-#define CTRL_SRV4_SPEED 0x4C
-#define CTRL_SRV4_TRGT 0x4D
+#define MTBS_SRV4_SPEED     0x4C
+#define MTBS_SRV4_TRGT      0x4D
 // motors commands
 //  MOTOR 1
-#define CTRL_MTR1_POS 0x4E
-#define CTRL_MTR1_TRGT 0x52
-#define CTRL_MTR1_SPEED 0x56
-#define CTRL_MTR1_MODE 0x57
+#define MTBS_MTR1_POS       0x4E
+#define MTBS_MTR1_TRGT      0x52
+#define MTBS_MTR1_SPEED     0x56
+#define MTBS_MTR1_MODE      0x57
 //  MOTOR 2
-#define CTRL_MTR2_POS 0x58
-#define CTRL_MTR2_TRGT 0x5C
-#define CTRL_MTR2_SPEED 0x60
-#define CTRL_MTR2_MODE 0x61
+#define MTBS_MTR2_POS       0x58
+#define MTBS_MTR2_TRGT      0x5C
+#define MTBS_MTR2_SPEED     0x60
+#define MTBS_MTR2_MODE      0x61
 //  MOTOR 3
-#define CTRL_MTR3_POS 0x62
-#define CTRL_MTR3_TRGT 0x66
-#define CTRL_MTR3_SPEED 0x6A
-#define CTRL_MTR3_MODE 0x6B
+#define MTBS_MTR3_POS       0x62
+#define MTBS_MTR3_TRGT      0x66
+#define MTBS_MTR3_SPEED     0x6A
+#define MTBS_MTR3_MODE      0x6B
 //  MOTOR 4
-#define CTRL_MTR4_POS 0x6C
-#define CTRL_MTR4_TRGT 0x70
-#define CTRL_MTR4_SPEED 0x74
-#define CTRL_MTR4_MODE 0x75
+#define MTBS_MTR4_POS       0x6C
+#define MTBS_MTR4_TRGT      0x70
+#define MTBS_MTR4_SPEED     0x74
+#define MTBS_MTR4_MODE      0x75
 
 /**
  * motor modes
  */
-enum MOTOR_MODES {
-    MTR_MODE_FLOAT = 0,
-    MTR_MODE_BRAKE,
-    MTR_MODE_SPEED,
-    MTR_MODE_SLEW
+enum MTBS_MOTOR_MODES {
+    MTBS_MTR_MODE_FLOAT = 0,    /// Float mode
+    MTBS_MTR_MODE_BRAKE,        /// Brake mode
+    MTBS_MTR_MODE_SPEED,        /// Speed mode
+    MTBS_MTR_MODE_SLEW          /// Slew mode
 };
 
 /**
@@ -126,9 +128,22 @@ class MTController
     int batteryLevel();
     
     /**
+     * Shut down motors and servos automaticcally within if no I2C transactions
+     * are received within the specified time, in the seconds
+     * @pram[in] time Amount of time to shut down automatically motors and 
+     * servos in seconds. Zero (0) means no timeout.
+     */
+    void timeout( int time );
+    
+    /**
      * enable servomotors
      */
     void enableServos();
+    
+    /**
+     * disable servos
+     */
+    void disableServos();
     
     /**
      * Set speed of the servo one
@@ -191,7 +206,7 @@ class MTController
     int motorOnePosition();
     
     /**
-     * Set the position of the motor one encoder , fi it is in *slew* mode.
+     * Set the position of the motor one encoder, if the motor is in *slew* mode.
      * param[in] target Position to reach
      */
     void motorOneReach( int target );
@@ -200,12 +215,15 @@ class MTController
      * Set the motor one mode 
      * @param[in] mode the mode for the motor one
      */
-    void motorOneMode( MOTOR_MODES mode );
+    void motorOneMode( MTBS_MOTOR_MODES mode );
     
 
     private:
-        uint8_t __servos_state;
+        int __servos_state;
         int __battery_level;
+     //   MOTOR_MODES[4] __mtrs_mode; // TODO
+    
+    void I2C_reader( int dataSize );
 };
 
 
