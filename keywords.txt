@@ -10,18 +10,18 @@ MTController	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-MTController	KEYWORD2
-BatteryLevel	KEYWORD2
-EnableServos	KEYWORD2
-ServoOneSpeed	KEYWORD2
-ServoOneAngle 	KEYWORD2
-ServoTwoSpeed	KEYWORD2
-ServoTwoAngle 	KEYWORD2
-ServoThreeSpeed	KEYWORD2
-ServoThreeAngle	KEYWORD2
-ServoFourSpeed	KEYWORD2
-ServoFourAngle 	KEYWORD2
-
+# MTController	KEYWORD2
+batteryLevel	KEYWORD2
+enableServos	KEYWORD2
+servoOneSpeed	KEYWORD2
+servoOneAngle 	KEYWORD2
+servoTwoSpeed	KEYWORD2
+servoTwoAngle 	KEYWORD2
+servoThreeSpeed	KEYWORD2
+servoThreeAngle	KEYWORD2
+servoFourSpeed	KEYWORD2
+servoFourAngle 	KEYWORD2
+motorOneSpedd   KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
