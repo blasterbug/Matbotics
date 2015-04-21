@@ -4,12 +4,14 @@ Matbotics is a Arduino library to control [Matrix Robotics System controller](ht
 The library is under **heavy** development!
 
 
-### Installation
+### Installation (Unix systems)
+
+Open a terminal and run :
 
     $ cd <ArduinoDirectory>/libraries
     $ git clone https://github.com/blasterbug/Matbotics.git
  
-Now after (re)starting the Arduino IDe you shloud see Matbotics in Arduino libraries menu.
+Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino libraries menu.
 
 
 ### Working
