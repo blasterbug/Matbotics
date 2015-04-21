@@ -11,6 +11,7 @@ The library is under **heavy** development!
 
 ### TODO
 
- - Read I2C messages from crontroller
- - Functions for motors 2/3/4
+ - Read I2C messages from controller
+ - Test motor 1 functions
+ - Functions to control motor 2/3/4
  - Controller data
