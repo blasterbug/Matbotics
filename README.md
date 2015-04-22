@@ -59,3 +59,4 @@ This exemple shows how to control a servo plugged to the port one
  - Read I2C messages from controller (i.e. battery level, motors encoders 
 postions, etc.)
  - Exemples
+ - Optimization
