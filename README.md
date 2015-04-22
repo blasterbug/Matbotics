@@ -11,17 +11,51 @@ Open a terminal and run :
     $ cd <UserDirectory>/Arduino/libraries
     $ git clone https://github.com/blasterbug/Matbotics.git
  
-Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino libraries menu.
+Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino 
+libraries menu.
 
+### Exemple
+
+This exemple shows how to control a servo plugged to the port one
+
+        // import library
+        #include <Wire.h>
+        #include <Matbotics.h>
+
+        // use the controller
+        MTController ctlr;
+
+        void setup()
+        {
+          // enable servos
+          ctlr.enableServos();
+          // switchoff timeout
+          ctlr.timeout( 0 );
+          // set a custom speed for the servo one
+          ctlr.servoOneSpeed( 5 );
+        }
+
+        // some variables
+        int angle = 0;
+
+        void loop()
+        {
+          // increase angle and stay in boundaries
+          angle = (angle + 10)%250;
+          // set the angle to the first servo
+          ctlr.servoOneAngle( angle );
+          delay( 600 ); 
+        }
 
 ### Working
 
- - Servos control
- - Motor 1 control
+ - Control all servos
+ - set speed of all motors
+ - timeout function
+
 
 ### TODO
 
- - Read I2C messages from controller
- - Test motor 1 functions
- - Functions to control motor 2/3/4
- - Controller data
+ - Read I2C messages from controller (i.e. battery level, motors encoders 
+postions, etc.)
+ - Exemples
