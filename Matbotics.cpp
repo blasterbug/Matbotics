@@ -32,10 +32,9 @@
 #define _MATBOTICS_CPP_
 
 // use TWI/I2C to communicate with Controller
-#include <Wire.h>
-
+#include "Wire.h"
+// header file
 #include "Matbotics.h"
-
 
 MTController::MTController() :
 __servos_state( 0 ),
@@ -43,7 +42,6 @@ __battery_level( -1 )
 {
     Wire.begin( 0x0 );
 }
-
 
 int MTController::batteryLevel()
 {
