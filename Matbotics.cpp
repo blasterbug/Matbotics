@@ -31,10 +31,10 @@
 #ifndef _MATBOTICS_CPP_
 #define _MATBOTICS_CPP_
 
-#include "Matbotics.h"
-
 // use TWI/I2C to communicate with Controller
 #include <Wire.h>
+
+#include "Matbotics.h"
 
 
 MTController::MTController() :
