@@ -35,6 +35,9 @@
  * servo positions are made, to be controlled. If the value is set to zero,
  * changes to the servo position is immediate. If the value is non-zero,
  * changes will occur at a rate equal 10*value milliseconds per step.
+ * The angle range is from 0 to 250 corresponding of the pulse ariation (to set
+ * the angle) between 0.75ms and 2.25ms.
+ *
  */
 
 
@@ -118,7 +121,8 @@ class MTController
     * Create MTController object
     */
     MTController();
-        
+    
+    
     /**
      * Get battery level
      * @n The Battery level returns the current battery voltage in units 
@@ -217,6 +221,78 @@ class MTController
      */
     void motorOneMode( MTBS_MOTOR_MODES mode );
     
+    /**
+     * Set the speed of the motor two, zero (0) causes the motor to stop.
+     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     */
+    void motorTwoSpeed( int motor_speed );
+    
+    /**
+     * get the position of the motor two
+     * @param[out] int Value of the current motor encoder value from 0 to 250
+     */
+    int motorTwoPosition();
+    
+    /**
+     * Set the position of the motor two encoder, if the motor is in *slew* mode.
+     * param[in] target Position to reach
+     */
+    void motorTwoReach( int target );
+    
+    /**
+     * Set the motor two mode 
+     * @param[in] mode the mode for the motor two
+     */
+    void motorTwoMode( MTBS_MOTOR_MODES mode );
+    
+    /**
+     * Set the speed of the motor three, zero (0) causes the motor to stop.
+     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     */
+    void motorThreeSpeed( int motor_speed );
+    
+    /**
+     * get the position of the motor three
+     * @param[out] int Value of the current motor encoder value from 0 to 250
+     */
+    int motorThreePosition();
+    
+    /**
+     * Set the position of the motor three encoder, if the motor is in *slew* 
+     * mode.
+     * param[in] target Position to reach
+     */
+    void motorThreeReach( int target );
+    
+    /**
+     * Set the motor three mode 
+     * @param[in] mode the mode for the motor three
+     */
+    void motorThreeMode( MTBS_MOTOR_MODES mode );
+    
+    /**
+     * Set the speed of the motor four, zero (0) causes the motor to stop.
+     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     */
+    void motorFourSpeed( int motor_speed );
+    
+    /**
+     * get the position of the motor four
+     * @param[out] int Value of the current motor encoder value from 0 to 250
+     */
+    int motorFourPosition();
+    
+    /**
+     * Set the position of the motor four encoder, if the motor is in *slew* mode.
+     * param[in] target Position to reach
+     */
+    void motorFourReach( int target );
+    
+    /**
+     * Set the motor four mode 
+     * @param[in] mode the mode for the motor four
+     */
+    void motorFourMode( MTBS_MOTOR_MODES mode );
 
     private:
         int __servos_state;

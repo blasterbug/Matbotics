@@ -41,15 +41,15 @@ MTController::MTController() :
 __servos_state( 0 ),
 __battery_level( -1 )
 {
-    Wire.begin();
+    Wire.begin( 0x0 );
 }
+
 
 int MTController::batteryLevel()
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
-    Wire.write( MTBS_BATT_LEVEL);
+    Wire.write( MTBS_BATT_LEVEL );
     Wire.endTransmission();
-    Wire.requestFrom( CONTROLLER_ADDRESS, 2 );
     /// @todo Read battery level from I2C
     return __battery_level;
 }
@@ -174,6 +174,105 @@ void MTController::motorOneMode( MTBS_MOTOR_MODES mode )
 {
     Wire.beginTransmission( CONTROLLER_ADDRESS );
     Wire.write( MTBS_MTR1_MODE );
+    Wire.write( mode ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorTwoSpeed( int motor_speed )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR2_SPEED );
+    Wire.write( motor_speed );
+    Wire.endTransmission();
+}
+
+int MTController::motorTwoPosition()
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR2_POS );
+    Wire.endTransmission();
+    /// @todo Read moteur encodeur value from I2C
+    return 0;
+}
+
+void MTController::motorTwoReach( int target )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR2_TRGT );
+    Wire.write( target ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorTwoMode( MTBS_MOTOR_MODES mode )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR2_MODE );
+    Wire.write( mode ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorThreeSpeed( int motor_speed )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR3_SPEED );
+    Wire.write( motor_speed );
+    Wire.endTransmission();
+}
+
+int MTController::motorThreePosition()
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR3_POS );
+    Wire.endTransmission();
+    /// @todo Read moteur encodeur value from I2C
+    return 0;
+}
+
+void MTController::motorThreeReach( int target )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR3_TRGT );
+    Wire.write( target ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorThreeMode( MTBS_MOTOR_MODES mode )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR3_MODE );
+    Wire.write( mode ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorFourSpeed( int motor_speed )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR4_SPEED );
+    Wire.write( motor_speed );
+    Wire.endTransmission();
+}
+
+int MTController::motorFourPosition()
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR4_POS );
+    Wire.endTransmission();
+    /// @todo Read moteur encodeur value from I2C
+    return 0;
+}
+
+void MTController::motorFourReach( int target )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR4_TRGT );
+    Wire.write( target ) ;
+    Wire.endTransmission();
+}
+
+void MTController::motorFourMode( MTBS_MOTOR_MODES mode )
+{
+    Wire.beginTransmission( CONTROLLER_ADDRESS );
+    Wire.write( MTBS_MTR4_MODE );
     Wire.write( mode ) ;
     Wire.endTransmission();
 }
