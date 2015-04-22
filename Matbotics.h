@@ -29,7 +29,7 @@
  */
 
 /**
- * @section About Servos
+ * \section About Servos
  *
  * The Servo 1/2/3/4 speed bytes allow the rate, at which changes to the
  * servo positions are made, to be controlled. If the value is set to zero,
@@ -103,10 +103,14 @@
  * motor modes
  */
 enum MTBS_MOTOR_MODES {
-    MTBS_MTR_MODE_FLOAT = 0,    /// Float mode
-    MTBS_MTR_MODE_BRAKE,        /// Brake mode
-    MTBS_MTR_MODE_SPEED,        /// Speed mode
-    MTBS_MTR_MODE_SLEW          /// Slew mode
+    /// Float mode
+    MTBS_MTR_MODE_FLOAT = 0,
+    /// Brake mode
+    MTBS_MTR_MODE_BRAKE,
+    /// Speed mode
+    MTBS_MTR_MODE_SPEED,
+    /// Slew mode
+    MTBS_MTR_MODE_SLEW          
 };
 
 /**
@@ -127,20 +131,20 @@ class MTController
      * Get battery level
      * @n The Battery level returns the current battery voltage in units 
      * of 40mV.
-     * param[out] battery level (TODO)
+     * @return battery level (TODO)
      */
     int batteryLevel();
     
     /**
      * Shut down motors and servos automaticcally within if no I2C transactions
      * are received within the specified time, in the seconds
-     * @pram[in] time Amount of time to shut down automatically motors and 
+     * @param time Amount of time to shut down automatically motors and 
      * servos in seconds. Zero (0) means no timeout.
      */
     void timeout( int time );
     
     /**
-     * enable servomotors
+     * enable servo motors
      */
     void enableServos();
     
@@ -151,61 +155,61 @@ class MTController
     
     /**
      * Set speed of the servo one
-     * @param[in] speed the speed to set
+     * @param speed the speed to set
      */
     void servoOneSpeed( int servo_speed );
     
     /**
      * Set the angle of the servo one
-     * @param[in] angle angle to reach
+     * @param angle angle to reach
      */
     void servoOneAngle( int angle );
     
     /**
      * Set speed of the servo two
-     * @param[in] speed the speed to set
+     * @param speed the speed to set
      */
     void servoTwoSpeed( int servo_speed );
     
     /**
      * Set the angle of the servo two
-     * @param[in] angle angle to reach
+     * @param angle angle to reach
      */
     void servoTwoAngle( int angle );
     
     /**
      * Set speed of the servo three
-     * @param[in] speed the speed to set
+     * @param servo_speed the speed to set
      */
     void servoThreeSpeed( int servo_speed );
     
     /**
      * Set the angle of the servo three
-     * @param[in] angle angle to reach
+     * @param angle angle to reach
      */
     void servoThreeAngle( int angle );
     
     /**
      * Set speed of the servo four
-     * @param[in] speed the speed to set
+     * @param servo_speed the speed to set
      */
     void servoFourSpeed( int servo_speed );
     
     /**
      * Set the angle of the servo four
-     * @param[in] angle angle to reach
+     * @param angle angle to reach
      */
     void servoFourAngle( int angle );
     
     /**
      * Set the speed of the motor one, zero (0) causes the motor to stop.
-     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     * @param motor_speed The speed of the motor ( from -100 to 100 )
      */
     void motorOneSpeed( int motor_speed );
     
     /**
      * get the position of the motor one
-     * @param[out] int Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value from 0 to 250
      */
     int motorOnePosition();
     
@@ -217,19 +221,19 @@ class MTController
     
     /**
      * Set the motor one mode 
-     * @param[in] mode the mode for the motor one
+     * @param mode the mode for the motor one
      */
     void motorOneMode( MTBS_MOTOR_MODES mode );
     
     /**
      * Set the speed of the motor two, zero (0) causes the motor to stop.
-     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     * @param motor_speed The speed of the motor ( from -100 to 100 )
      */
     void motorTwoSpeed( int motor_speed );
     
     /**
      * get the position of the motor two
-     * @param[out] int Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value from 0 to 250
      */
     int motorTwoPosition();
     
@@ -241,19 +245,19 @@ class MTController
     
     /**
      * Set the motor two mode 
-     * @param[in] mode the mode for the motor two
+     * @param mode the mode for the motor two
      */
     void motorTwoMode( MTBS_MOTOR_MODES mode );
     
     /**
      * Set the speed of the motor three, zero (0) causes the motor to stop.
-     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     * @param motor_speed The speed of the motor ( from -100 to 100 )
      */
     void motorThreeSpeed( int motor_speed );
     
     /**
      * get the position of the motor three
-     * @param[out] int Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value from 0 to 250
      */
     int motorThreePosition();
     
@@ -266,19 +270,19 @@ class MTController
     
     /**
      * Set the motor three mode 
-     * @param[in] mode the mode for the motor three
+     * @param mode the mode for the motor three
      */
     void motorThreeMode( MTBS_MOTOR_MODES mode );
     
     /**
      * Set the speed of the motor four, zero (0) causes the motor to stop.
-     * @param[in] motor_speed The speed of the motor ( from -100 to 100 )
+     * @param motor_speed The speed of the motor ( from -100 to 100 )
      */
     void motorFourSpeed( int motor_speed );
     
     /**
      * get the position of the motor four
-     * @param[out] int Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value from 0 to 250
      */
     int motorFourPosition();
     
@@ -290,7 +294,7 @@ class MTController
     
     /**
      * Set the motor four mode 
-     * @param[in] mode the mode for the motor four
+     * @param mode the mode for the motor four
      */
     void motorFourMode( MTBS_MOTOR_MODES mode );
 
