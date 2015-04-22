@@ -29,7 +29,7 @@
  */
 
 /**
- * \section About Servos
+ * \page info Servos Control
  *
  * The Servo 1/2/3/4 speed bytes allow the rate, at which changes to the
  * servo positions are made, to be controlled. If the value is set to zero,
@@ -155,7 +155,7 @@ class MTController
     
     /**
      * Set speed of the servo one
-     * @param speed the speed to set
+     * @param servo_speed the speed to set
      */
     void servoOneSpeed( int servo_speed );
     
@@ -167,7 +167,7 @@ class MTController
     
     /**
      * Set speed of the servo two
-     * @param speed the speed to set
+     * @param servo_speed the speed to set
      */
     void servoTwoSpeed( int servo_speed );
     
