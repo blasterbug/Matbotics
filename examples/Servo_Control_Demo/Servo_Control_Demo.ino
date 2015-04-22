@@ -12,8 +12,10 @@
  * - See the magic
 */
 
-// import library
+// import libraries
+//  for I2C/TWI
 #include <Wire.h>
+//  for Matrics controller
 #include <Matbotics.h>
 
 // use the controller
