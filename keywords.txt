@@ -16,6 +16,7 @@ MTController	KEYWORD2
 batteryLevel	KEYWORD2
 timeout	KEYWORD2
 enableServos	KEYWORD2
+disableServos	KEYWORD2
 servoOneSpeed	KEYWORD2
 servoOneAngle	KEYWORD2
 servoTwoSpeed	KEYWORD2
