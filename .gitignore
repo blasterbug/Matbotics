@@ -36,3 +36,6 @@
 ._*
 .*
 .DS_Store
+
+# documentation folder
+html/
