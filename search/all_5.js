@@ -2,7 +2,6 @@ var searchData=
 [
   ['matbotics_2ecpp',['Matbotics.cpp',['../_matbotics_8cpp.html',1,'']]],
   ['matbotics_2eh',['Matbotics.h',['../_matbotics_8h.html',1,'']]],
-  ['matbotics',['Matbotics',['../md__r_e_a_d_m_e.html',1,'']]],
   ['motorfourmode',['motorFourMode',['../class_m_t_controller.html#a9542c059b4136a8cc333fa4daea5f2c2',1,'MTController']]],
   ['motorfourposition',['motorFourPosition',['../class_m_t_controller.html#a9860073718262c5c58d770c61f9b4782',1,'MTController']]],
   ['motorfourreach',['motorFourReach',['../class_m_t_controller.html#ac028570ac6f7acf5f3bdf20c45f18972',1,'MTController']]],
