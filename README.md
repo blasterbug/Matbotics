@@ -3,6 +3,7 @@ Matbotics is a Arduino library to control [Matrix Robotics System controller](ht
 
 The library is under **heavy** development!
 
+Online documentation [here](http://blasterbug.github.io/Matbotics/)
 
 ### Installation (Unix systems)
 
