@@ -311,7 +311,8 @@ class MTController
         int __battery_level;
      //   MOTOR_MODES[4] __mtrs_mode; // TODO
     
-    void I2C_reader( int dataSize );
+    
+    //void I2C_reader( int dataSize );
 };
 
 
