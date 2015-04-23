@@ -44,7 +44,7 @@ MTController::MTController() :
 __servos_state( 0 ),
 __battery_level( -1 )
 {
-    Wire.begin( 0x0 );
+    Wire.begin();
 }
 
 int MTController::batteryLevel()
