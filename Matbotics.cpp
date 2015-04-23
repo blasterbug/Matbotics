@@ -26,6 +26,10 @@
  * @date 2015/04/20
  * @author Benjamin Sientzoff
  * @version 0.1
+ *
+ *
+ * \todo documentation for this file
+ *
  */
 
 #ifndef _MATBOTICS_CPP_

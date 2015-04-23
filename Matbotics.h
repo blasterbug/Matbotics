@@ -26,9 +26,8 @@
  * @date 2015/04/20
  * @author Benjamin Sientzoff
  * @version 0.1
- */
-
-/**
+ *
+ *
  * \page info Servos Control
  *
  * The Servo 1/2/3/4 speed bytes allow the rate, at which changes to the
@@ -49,19 +48,28 @@
 // register address to write in to control motors/servos
 // for more details see MatriX Controller specification
 // controller vars
+/// controller firmware version
 #define MTBS_VRS            0x07
+/// controller manufacturer name
 #define MTBS_MANU           0x0F
+/// controller type 
 #define MTBS_TYPE           0x17
+/// controller status 
 #define MTBS_STATUS         0x41
+/// set timeout
 #define MTBS_TIME_OUT       0x42
+/// get battery level
 #define MTBS_BATT_LEVEL     0x43
-#define MTBS_STRT_FALG      0x44
+/// set motors start flag ? (see doc)
+#define MTBS_STRT_FLAG      0x44
 // servos commands
 #define MTBS_SERVOS_STATE   0x45
-// actived all servos
-// Matrix Controller uses for bits to enable each one.
-//  SERVOS  1   2   3   4
-//  0xF     1   1   1   1
+/**
+ * actived all servos
+ * Matrix Controller uses for bits to enable each one.
+ *   SERVOS  1   2   3   4
+ *   0xF     1   1   1   1
+ */
 #define MTBS_USE_ALL_SERVOS 0xF
 // desactived all servos
 #define MTBS_USE_NO_SERVO   0x0
