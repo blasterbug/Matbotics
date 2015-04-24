@@ -19,7 +19,7 @@ libraries menu.
 
 This exemple shows how to control a servo plugged to the port one
 
-        // import library
+        // import libraries
         #include <Wire.h>
         #include <Matbotics.h>
 
