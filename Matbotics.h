@@ -153,9 +153,7 @@ class MTController
     
     /**
      * Get battery level
-     * @n The Battery level returns the current battery voltage in units 
-     * of 40mV.
-     * @return battery level (TODO)
+     * @n The Battery level returns the current battery voltage in volts.
      */
     int batteryLevel();
     

@@ -74,10 +74,8 @@ String MTController::version()
 
 int MTController::batteryLevel()
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_BATT_LEVEL, 2);
-    /// @todo Read battery level from I2C
-    __battery_level = I2c.receive() << 8;
-    __battery_level |= I2c.receive();
+    I2c.write( CONTROLLER_ADDRESS, MTBS_BATT_LEVEL, 1 );
+    __battery_level = I2c.receive();
     return __battery_level;
 }
 
