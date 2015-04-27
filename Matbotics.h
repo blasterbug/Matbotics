@@ -307,9 +307,9 @@ class MTController
     void motorFourMode( MTBS_MOTOR_MODES mode );
 
     private:
-        int __servos_state;
+     // int __servos_state;
         int __battery_level;
-     //   MOTOR_MODES[4] __mtrs_mode; // TODO
+     // MOTOR_MODES[4] __mtrs_mode; // TODO
     
     
     //void I2C_reader( int dataSize );
