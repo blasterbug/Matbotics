@@ -45,12 +45,39 @@ MTController::MTController() :
 __battery_level( -1 )
 {
     I2c.begin();
+    // get Controller verion number
+    I2c.read( CONTROLLER_ADDRESS, MTBS_VRS , 4, (uint8_t*)__vers_number );
+    // adding terminate zero, because not present due to casting char*/uint8_t*
+    __vers_number[4] = '\0'; 
+    // get Controller manufacturer
+    I2c.read( CONTROLLER_ADDRESS, MTBS_MANU , 8, (uint8_t*)__manufacturer );
+    __manufacturer[8] = '\0'; 
+    // get Controller type
+    I2c.read( CONTROLLER_ADDRESS, MTBS_TYPE , 8, (uint8_t*)__type );
+    __type[8] = '\0'; 
+}
+
+String MTController::manufacturer()
+{
+    return String( __manufacturer );
+}
+
+String MTController::type()
+{
+    return String( __type );
+}
+
+String MTController::version()
+{
+    return String( __vers_number );
 }
 
 int MTController::batteryLevel()
 {
-    //I2c.write( CONTROLLER_ADDRESS, MTBS_BATT_LEVEL, 2);
+    I2c.write( CONTROLLER_ADDRESS, MTBS_BATT_LEVEL, 2);
     /// @todo Read battery level from I2C
+    __battery_level = I2c.receive() << 8;
+    __battery_level |= I2c.receive();
     return __battery_level;
 }
 
@@ -143,9 +170,11 @@ void MTController::motorTwoSpeed( int motor_speed )
 
 int MTController::motorTwoPosition()
 {
-    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR2_POS, 1 );
-    /// @todo Read moteur encodeur value from I2C
-    return I2c.receive();
+    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR2_POS, 2 );
+    int pos = 0;
+    pos |= I2c.receive() ;
+    pos |= I2c.receive() << 8;
+    return pos;
 }
 
 void MTController::motorTwoReach( int target )
@@ -187,8 +216,8 @@ void MTController::motorFourSpeed( int motor_speed )
 
 int MTController::motorFourPosition()
 {
-    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR4_POS, 1 );
-    /// @todo Read moteur encodeur value from I2C
+    //int motor4pos;
+    //I2c.read( CONTROLLER_ADDRESS, MTBS_MTR4_POS, 1, motor4pos );
     return 0;
 }
 

@@ -49,11 +49,11 @@
 // for more details see MatriX Controller specification
 // controller vars
 /// controller firmware version
-#define MTBS_VRS            0x07
+#define MTBS_VRS            0x00
 /// controller manufacturer name
-#define MTBS_MANU           0x0F
+#define MTBS_MANU           0x08
 /// controller type 
-#define MTBS_TYPE           0x17
+#define MTBS_TYPE           0x10
 /// controller status 
 #define MTBS_STATUS         0x41
 /// set timeout
@@ -109,10 +109,11 @@
 
 /**
  * motor modes
+ * \todo fix motor modes
  */
 enum MTBS_MOTOR_MODES {
     /// Float mode
-    MTBS_MTR_MODE_FLOAT = 0,
+    MTBS_MTR_MODE_FLOAT = 0x0,
     /// Brake mode
     MTBS_MTR_MODE_BRAKE,
     /// Speed mode
@@ -134,6 +135,21 @@ class MTController
     */
     MTController();
     
+    /**
+     * Get the controller version manufacturer
+     * @return Controller version manufacturer
+     */
+    String manufacturer();
+    /**
+     * Get the controller version type
+     * @return Controller version type
+     */
+    String type();
+    /**
+     * Get the controller version number
+     * @return Controller version number
+     */
+    String version();
     
     /**
      * Get battery level
@@ -223,7 +239,7 @@ class MTController
     
     /**
      * Set the position of the motor one encoder, if the motor is in *slew* mode.
-     * param[in] target Position to reach
+     * @param target Position to reach
      */
     void motorOneReach( int target );
     
@@ -247,7 +263,7 @@ class MTController
     
     /**
      * Set the position of the motor two encoder, if the motor is in *slew* mode.
-     * param[in] target Position to reach
+     * @param target Position to reach, value ranging from 0 to 250.
      */
     void motorTwoReach( int target );
     
@@ -272,7 +288,7 @@ class MTController
     /**
      * Set the position of the motor three encoder, if the motor is in *slew* 
      * mode.
-     * param[in] target Position to reach
+     * @param target Position to reach, value ranging from 0 to 250.
      */
     void motorThreeReach( int target );
     
@@ -296,7 +312,7 @@ class MTController
     
     /**
      * Set the position of the motor four encoder, if the motor is in *slew* mode.
-     * param[in] target Position to reach
+     * @param target Position to reach, value ranging from 0 to 250.
      */
     void motorFourReach( int target );
     
@@ -307,9 +323,16 @@ class MTController
     void motorFourMode( MTBS_MOTOR_MODES mode );
 
     private:
-     // int __servos_state;
-        int __battery_level;
-     // MOTOR_MODES[4] __mtrs_mode; // TODO
+    
+    // controller manufacturer
+    char __manufacturer[9];
+    // controller type
+    char __type[9];
+    // Controller version number
+    char __vers_number[5];
+    int __battery_level;
+    // int __servos_state;
+    // MOTOR_MODES[4] __mtrs_mode; // TODO
     
     
     //void I2C_reader( int dataSize );
