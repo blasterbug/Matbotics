@@ -13,6 +13,9 @@ MTBS_MOTOR_MODES KEYWORD1
 #######################################
 Mactobics	KEYWORD2
 MTController	KEYWORD2
+manufacturer	KEYWORD2
+type		KEYWORD2
+version		KEYWORD2
 batteryLevel	KEYWORD2
 timeout	KEYWORD2
 enableServos	KEYWORD2
