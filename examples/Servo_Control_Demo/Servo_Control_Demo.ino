@@ -13,8 +13,8 @@
 */
 
 // import libraries
-//  for I2C/TWI
-#include <Wire.h>
+//  Arduino I2C Master
+#include <I2C.h>
 //  for Matrics controller
 #include <Matbotics.h>
 
