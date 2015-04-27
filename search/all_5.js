@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['manufacturer',['manufacturer',['../class_m_t_controller.html#a0def1dad4a237af69db26bc22e50c0bb',1,'MTController']]],
   ['matbotics_2ecpp',['Matbotics.cpp',['../_matbotics_8cpp.html',1,'']]],
   ['matbotics_2eh',['Matbotics.h',['../_matbotics_8h.html',1,'']]],
   ['motorfourmode',['motorFourMode',['../class_m_t_controller.html#a9542c059b4136a8cc333fa4daea5f2c2',1,'MTController']]],

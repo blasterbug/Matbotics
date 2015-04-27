@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['manufacturer',['manufacturer',['../class_m_t_controller.html#a0def1dad4a237af69db26bc22e50c0bb',1,'MTController']]],
   ['motorfourmode',['motorFourMode',['../class_m_t_controller.html#a9542c059b4136a8cc333fa4daea5f2c2',1,'MTController']]],
   ['motorfourposition',['motorFourPosition',['../class_m_t_controller.html#a9860073718262c5c58d770c61f9b4782',1,'MTController']]],
   ['motorfourreach',['motorFourReach',['../class_m_t_controller.html#ac028570ac6f7acf5f3bdf20c45f18972',1,'MTController']]],

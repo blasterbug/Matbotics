@@ -83,13 +83,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><p>Matbotics is a Arduino library to control <a href="http://matrixrobotics.com/2014/10/09/controller-specification/">Matrix Robotics System controller</a></p>
 <p>The library is under <b>heavy</b> development!</p>
+<p>Matbotics uses <a href="http://dsscircuits.com/articles/arduino-i2c-master-library">Arduino I2C master library</a> to support "repeat start".</p>
 <p>Online documentation <a href="http://blasterbug.github.io/Matbotics/">here</a></p>
 <h3>Installation (Unix systems)</h3>
 <p>Open a terminal and run : </p><pre class="fragment">$ cd &lt;UserDirectory&gt;/Arduino/libraries
 $ git clone https://github.com/blasterbug/Matbotics.git
 </pre><p>Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino libraries menu.</p>
 <h3>Exemple</h3>
-<p>This exemple shows how to control a servo plugged to the port one </p><pre class="fragment">    // import library
+<p>This exemple shows how to control a servo plugged to the port one </p><pre class="fragment">    // import libraries
     #include &lt;Wire.h&gt;
     #include &lt;Matbotics.h&gt;
 
