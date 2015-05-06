@@ -5,8 +5,9 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-MTController KEYWORD1
-MTBS_MOTOR_MODES KEYWORD1
+Matbotics	KEYWORD1
+MTController	KEYWORD1
+MTBS_MOTOR_MODES	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
