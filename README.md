@@ -21,37 +21,40 @@ libraries menu.
 
 This exemple shows how to control a servo plugged to the port one
 
-        // import libraries
-        #include <Wire.h>
-        #include <Matbotics.h>
+```arduino
+// import libraries
+#include <I2C.h>
+#include <Matbotics.h>
 
-        // use the controller
-        MTController ctlr;
+// use the controller
+MTController ctlr;
 
-        void setup()
-        {
-          // enable servos
-          ctlr.enableServos();
-          // switchoff timeout
-          ctlr.timeout( 0 );
-          // set a custom speed for the servo one
-          ctlr.servoOneSpeed( 5 );
-        }
+void setup()
+{
+    // enable servos
+    ctlr.enableServos();
+    // switchoff timeout
+    ctlr.timeout( 0 );
+    // set a custom speed for the servo one
+    ctlr.servoOneSpeed( 5 );
+}
 
-        // some variables
-        int angle = 0;
+// some variables
+int angle = 0;
 
-        void loop()
-        {
-          // increase angle and stay in boundaries
-          angle = (angle + 10)%250;
-          // set the angle to the first servo
-          ctlr.servoOneAngle( angle );
-          delay( 600 ); 
-        }
+void loop()
+{
+    // increase angle and stay in boundaries
+    angle = (angle + 10)%250;
+    // set the angle to the first servo
+    ctlr.servoOneAngle( angle );
+    delay( 600 ); 
+}
+```
 
 ### Working
 
+ - Get battery level, controller status, version, etc.
  - Control all servos
  - set speed of all motors
  - timeout function
@@ -59,7 +62,7 @@ This exemple shows how to control a servo plugged to the port one
 
 ### TODO
 
- - Read I2C messages from controller (i.e. battery level, motors encoders 
+ - Read I2C messages from controller (i.e. motors encoders 
 postions, etc.)
- - Exemples
- - Optimization
+ - More exemples
+ - Optimization?
