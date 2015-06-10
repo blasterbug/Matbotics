@@ -150,19 +150,19 @@ void MTController::motorOneSpeed( int motor_speed )
     I2c.write( CONTROLLER_ADDRESS, MTBS_MTR1_SPEED, motor_speed );
 }
 
-int MTController::motorOnePosition()
+long MTController::motorOnePosition()
 {
     return 0;
 }
 
-void MTController::motorOneReach( int target )
+void MTController::motorOneReach( long target )
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR1_TRGT, target ) ;
+    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR1_TRGT, (uint8_t*)&target, 8 );
 }
 
 void MTController::motorOneMode( MTBS_MOTOR_MODES mode )
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR1_MODE, mode ) ;
+    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR1_MODE, mode );
 }
 
 void MTController::motorTwoSpeed( int motor_speed )
@@ -170,23 +170,21 @@ void MTController::motorTwoSpeed( int motor_speed )
     I2c.write( CONTROLLER_ADDRESS, MTBS_MTR2_SPEED, motor_speed );
 }
 
-int MTController::motorTwoPosition()
+long MTController::motorTwoPosition()
 {
     long pos = 0;
     I2c.read( CONTROLLER_ADDRESS, MTBS_MTR2_POS, 4, (uint8_t*)&pos );
-    pos |= I2c.receive() ;
-    pos |= I2c.receive() << 8;
     return pos;
 }
 
-void MTController::motorTwoReach( int target )
+void MTController::motorTwoReach( long target )
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR2_TRGT, target ) ;
+    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR2_TRGT, (uint8_t*)&target, 8 );
 }
 
 void MTController::motorTwoMode( MTBS_MOTOR_MODES mode )
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR2_MODE, mode ) ;
+    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR2_MODE, mode );
 }
 
 void MTController::motorThreeSpeed( int motor_speed )
@@ -194,16 +192,14 @@ void MTController::motorThreeSpeed( int motor_speed )
     I2c.write( CONTROLLER_ADDRESS, MTBS_MTR3_SPEED, motor_speed );
 }
 
-int MTController::motorThreePosition()
+long MTController::motorThreePosition()
 {
-    //I2c.read( CONTROLLER_ADDRESS, MTBS_MTR3_POS, 1 );
-    /// @todo Read moteur encodeur value from I2C
     return 0;
 }
 
-void MTController::motorThreeReach( int target )
+void MTController::motorThreeReach( long target )
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR3_TRGT, target ) ;
+    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR3_TRGT, (uint8_t*)&target, 8 );
 }
 
 void MTController::motorThreeMode( MTBS_MOTOR_MODES mode )
@@ -216,16 +212,14 @@ void MTController::motorFourSpeed( int motor_speed )
     I2c.write( CONTROLLER_ADDRESS, MTBS_MTR4_SPEED, motor_speed );
 }
 
-int MTController::motorFourPosition()
+long MTController::motorFourPosition()
 {
-    //int motor4pos;
-    //I2c.read( CONTROLLER_ADDRESS, MTBS_MTR4_POS, 1, motor4pos );
     return 0;
 }
 
-void MTController::motorFourReach( int target )
+void MTController::motorFourReach( long target )
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR4_TRGT, target ) ;
+    I2c.write( CONTROLLER_ADDRESS, MTBS_MTR4_TRGT, (uint8_t*)&target, 8 );
 }
 
 void MTController::motorFourMode( MTBS_MOTOR_MODES mode )

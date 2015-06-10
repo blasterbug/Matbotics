@@ -112,14 +112,16 @@
  * \todo read/set motor modes
  */
 enum MTBS_MOTOR_MODES {
-    /// Slew mode
-    MTBS_MTR_MODE_SLEW  =   B00000011,
     /// Float mode
-    MTBS_MTR_MODE_FLOAT =   B00000100,
+    MTBS_MTR_MODE_FLOAT = 0,    // B00000000,
     /// Brake mode
-    MTBS_MTR_MODE_BRAKE =   B00000101,
+    MTBS_MTR_MODE_BRAKE,        // B00000001,
     /// Speed mode
-    MTBS_MTR_MODE_SPEED =   B00000110       
+    MTBS_MTR_MODE_SPEED,        // B00000010,
+    /// Slew mode
+    MTBS_MTR_MODE_SLEW,         // B00000011,
+    /// reset motor channel
+    MTBS_MTR_MODE_RESET         // B00000100,
 };
 
 /**
@@ -246,15 +248,15 @@ class MTController
     
     /**
      * get the position of the motor one
-     * @return Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value
      */
-    int motorOnePosition();
+    long motorOnePosition();
     
     /**
      * Set the position of the motor one encoder, if the motor is in *slew* mode.
      * @param target Position to reach
      */
-    void motorOneReach( int target );
+    void motorOneReach( long target );
     
     /**
      * Set the motor one mode 
@@ -270,15 +272,15 @@ class MTController
     
     /**
      * get the position of the motor two
-     * @return Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value
      */
-    int motorTwoPosition();
+    long motorTwoPosition();
     
     /**
      * Set the position of the motor two encoder, if the motor is in *slew* mode.
-     * @param target Position to reach, value ranging from 0 to 250.
+     * @param target Position to reach
      */
-    void motorTwoReach( int target );
+    void motorTwoReach( long target );
     
     /**
      * Set the motor two mode 
@@ -294,16 +296,16 @@ class MTController
     
     /**
      * get the position of the motor three
-     * @return Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder value
      */
-    int motorThreePosition();
+    long motorThreePosition();
     
     /**
      * Set the position of the motor three encoder, if the motor is in *slew* 
      * mode.
-     * @param target Position to reach, value ranging from 0 to 250.
+     * @param target Position to reach
      */
-    void motorThreeReach( int target );
+    void motorThreeReach( long target );
     
     /**
      * Set the motor three mode 
@@ -319,15 +321,15 @@ class MTController
     
     /**
      * get the position of the motor four
-     * @return Value of the current motor encoder value from 0 to 250
+     * @return Value of the current motor encoder
      */
-    int motorFourPosition();
+    long motorFourPosition();
     
     /**
      * Set the position of the motor four encoder, if the motor is in *slew* mode.
-     * @param target Position to reach, value ranging from 0 to 250.
+     * @param target Position to reach
      */
-    void motorFourReach( int target );
+    void motorFourReach( long target );
     
     /**
      * Set the motor four mode 
