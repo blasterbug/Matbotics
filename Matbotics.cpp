@@ -23,9 +23,9 @@
  *
  * @section infos File informations
  *
- * @date 2015/04/20
+ * @date 2015/06/10
  * @author Benjamin Sientzoff
- * @version 0.1
+ * @version 0.2
  *
  *
  * \todo documentation for this file

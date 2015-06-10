@@ -23,9 +23,9 @@
  *
  * @section infos File informations
  *
- * @date 2015/04/20
+ * @date 2015/06/10
  * @author Benjamin Sientzoff
- * @version 0.1
+ * @version 0.2
  *
  *
  * \page info Servos Control
@@ -112,14 +112,14 @@
  * \todo read/set motor modes
  */
 enum MTBS_MOTOR_MODES {
-    /// Float mode
-    MTBS_MTR_MODE_FLOAT = 0x0,
-    /// Brake mode
-    MTBS_MTR_MODE_BRAKE,
-    /// Speed mode
-    MTBS_MTR_MODE_SPEED,
     /// Slew mode
-    MTBS_MTR_MODE_SLEW          
+    MTBS_MTR_MODE_SLEW  =   B00000011,
+    /// Float mode
+    MTBS_MTR_MODE_FLOAT =   B00000100,
+    /// Brake mode
+    MTBS_MTR_MODE_BRAKE =   B00000101,
+    /// Speed mode
+    MTBS_MTR_MODE_SPEED =   B00000110       
 };
 
 /**
