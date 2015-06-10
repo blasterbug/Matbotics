@@ -58,12 +58,12 @@ void loop()
  - Get battery level, controller status, version, etc.
  - Control all servos
  - set speed of all motors
+ - set motor target
+ - read motors encoders value
  - timeout function
 
 
 ### TODO
 
- - Read I2C messages from controller (i.e. motors encoders 
-postions, etc.)
  - More exemples
  - Optimization?
