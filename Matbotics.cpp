@@ -72,11 +72,17 @@ String MTController::version()
     return String( __vers_number );
 }
 
-int MTController::batteryLevel()
+float MTController::batteryLevel()
 {
-    I2c.write( CONTROLLER_ADDRESS, MTBS_BATT_LEVEL, 1 );
-    __battery_level = I2c.receive();
-    return __battery_level;
+    I2c.read( CONTROLLER_ADDRESS, MTBS_BATT_LEVEL , 1, &__battery_level );
+    // battery voltage is in units of 40mV
+    return __battery_level*.04;
+}
+
+MTBS_STATUS_VALUE MTController::status()
+{
+    I2c.read( CONTROLLER_ADDRESS, MTBS_STATUS , 1, (uint8_t*)&__status );
+    return __status;
 }
 
 void MTController::timeout( int time )
@@ -146,8 +152,6 @@ void MTController::motorOneSpeed( int motor_speed )
 
 int MTController::motorOnePosition()
 {
-    //I2c.read( CONTROLLER_ADDRESS, MTBS_MTR1_POS, 1 );
-    /// @todo Read moteur encodeur value from I2C
     return 0;
 }
 
@@ -168,8 +172,8 @@ void MTController::motorTwoSpeed( int motor_speed )
 
 int MTController::motorTwoPosition()
 {
-    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR2_POS, 2 );
-    int pos = 0;
+    long pos = 0;
+    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR2_POS, 4, (uint8_t*)&pos );
     pos |= I2c.receive() ;
     pos |= I2c.receive() << 8;
     return pos;

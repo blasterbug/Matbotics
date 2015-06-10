@@ -109,7 +109,7 @@
 
 /**
  * motor modes
- * \todo fix motor modes
+ * \todo read/set motor modes
  */
 enum MTBS_MOTOR_MODES {
     /// Float mode
@@ -120,6 +120,15 @@ enum MTBS_MOTOR_MODES {
     MTBS_MTR_MODE_SPEED,
     /// Slew mode
     MTBS_MTR_MODE_SLEW          
+};
+
+/**
+ * Controller status
+ */
+enum MTBS_STATUS_VALUE {
+    MTBS_STATUS_OK = 0,
+    MTBS_STATUS_FAULT, // fault status
+    MTBS_STATUS_LOWBATT  // low battery
 };
 
 /**
@@ -153,9 +162,15 @@ class MTController
     
     /**
      * Get battery level
-     * @n The Battery level returns the current battery voltage in volts.
+     * @return The Battery level returns the current battery voltage in volts.
      */
-    int batteryLevel();
+    float batteryLevel();
+    
+    /**
+     * Return the status of the box
+     * @return the status of the controller
+     */
+    MTBS_STATUS_VALUE status();
     
     /**
      * Shut down motors and servos automaticcally within if no I2C transactions
@@ -328,7 +343,8 @@ class MTController
     char __type[9];
     // Controller version number
     char __vers_number[5];
-    int __battery_level;
+    uint8_t __battery_level;
+    MTBS_STATUS_VALUE __status;
     // int __servos_state;
     // MOTOR_MODES[4] __mtrs_mode; // TODO
     
