@@ -68,7 +68,7 @@
  * actived all servos
  * Matrix Controller uses for bits to enable each one.
  *   SERVOS  1   2   3   4
- *   0xF     1   1   1   1
+ *   0xF  =  1   1   1   1
  */
 #define MTBS_USE_ALL_SERVOS 0xF
 // desactived all servos
@@ -347,11 +347,7 @@ class MTController
     char __vers_number[5];
     uint8_t __battery_level;
     MTBS_STATUS_VALUE __status;
-    // int __servos_state;
-    // MOTOR_MODES[4] __mtrs_mode; // TODO
     
-    
-    //void I2C_reader( int dataSize );
 };
 
 
