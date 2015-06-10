@@ -10,10 +10,11 @@ Online documentation [here](http://blasterbug.github.io/Matbotics/)
 ### Installation (Unix systems)
 
 Open a terminal and run :
+```bash
+$ cd <UserDirectory>/Arduino/libraries
+$ git clone https://github.com/blasterbug/Matbotics.git
+```
 
-    $ cd <UserDirectory>/Arduino/libraries
-    $ git clone https://github.com/blasterbug/Matbotics.git
- 
 Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino 
 libraries menu.
 
