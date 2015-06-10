@@ -152,7 +152,9 @@ void MTController::motorOneSpeed( int motor_speed )
 
 long MTController::motorOnePosition()
 {
-    return 0;
+    long pos = 0;
+    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR1_POS, 4, (uint8_t*)&pos );
+    return pos;
 }
 
 void MTController::motorOneReach( long target )
@@ -194,7 +196,9 @@ void MTController::motorThreeSpeed( int motor_speed )
 
 long MTController::motorThreePosition()
 {
-    return 0;
+    long pos = 0;
+    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR3_POS, 4, (uint8_t*)&pos );
+    return pos;
 }
 
 void MTController::motorThreeReach( long target )
@@ -214,7 +218,9 @@ void MTController::motorFourSpeed( int motor_speed )
 
 long MTController::motorFourPosition()
 {
-    return 0;
+    long pos = 0;
+    I2c.read( CONTROLLER_ADDRESS, MTBS_MTR4_POS, 4, (uint8_t*)&pos );
+    return pos;
 }
 
 void MTController::motorFourReach( long target )
