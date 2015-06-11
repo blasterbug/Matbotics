@@ -68,4 +68,4 @@ void loop()
 
 [Arduino I2C master library]: http://dsscircuits.com/articles/arduino-i2c-master-library
 [Matrix Robotics System controller]: http://matrixrobotics.com/2014/10/09/controller-specification/
-[Online documentation] :http://blasterbug.github.io/Matbotics/
+[Online documentation]: http://blasterbug.github.io/Matbotics/
