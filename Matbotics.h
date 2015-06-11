@@ -127,7 +127,7 @@ enum MTBS_MOTOR_MODES {
 /**
  * Controller status
  */
-enum MTBS_STATUS_VALUE {
+enum MTBS_STATUS_VALUES {
     MTBS_STATUS_OK = 0,
     MTBS_STATUS_FAULT, // fault status
     MTBS_STATUS_LOWBATT  // low battery
@@ -172,7 +172,7 @@ class MTController
      * Return the status of the box
      * @return the status of the controller
      */
-    MTBS_STATUS_VALUE status();
+    MTBS_STATUS_VALUES status();
     
     /**
      * Shut down motors and servos automaticcally within if no I2C transactions
@@ -346,7 +346,7 @@ class MTController
     // Controller version number
     char __vers_number[5];
     uint8_t __battery_level;
-    MTBS_STATUS_VALUE __status;
+    MTBS_STATUS_VALUES __status;
     
 };
 
