@@ -79,7 +79,7 @@ float MTController::batteryLevel()
     return __battery_level*.04;
 }
 
-MTBS_STATUS_VALUE MTController::status()
+MTBS_STATUS_VALUES MTController::status()
 {
     I2c.read( CONTROLLER_ADDRESS, MTBS_STATUS , 1, (uint8_t*)&__status );
     return __status;
