@@ -1,12 +1,9 @@
 # Matbotics
-Matbotics is a Arduino library to control [Matrix Robotics System controller](http://matrixrobotics.com/2014/10/09/controller-specification/)
+Matbotics is a Arduino library to control [Matrix Robotics System controller].  
+Matbotics uses [Arduino I2C master library] to support _repeat start_, 
+because Wire library (issued with the Arduino IDE) does not.
 
-The library is under **heavy** development!
-
-Matbotics uses [Arduino I2C master library](http://dsscircuits.com/articles/arduino-i2c-master-library) to support "repeat start".
-
-Online documentation [here](http://blasterbug.github.io/Matbotics/)
-
+[Online documentation]
 
 ### Features
 
@@ -67,3 +64,8 @@ void loop()
 
  - More exemples
  - Optimization?
+
+
+[Arduino I2C master library]: http://dsscircuits.com/articles/arduino-i2c-master-library
+[Matrix Robotics System controller]: http://matrixrobotics.com/2014/10/09/controller-specification/
+[Online documentation] :http://blasterbug.github.io/Matbotics/
