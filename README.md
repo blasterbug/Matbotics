@@ -7,7 +7,17 @@ Matbotics uses [Arduino I2C master library](http://dsscircuits.com/articles/ardu
 
 Online documentation [here](http://blasterbug.github.io/Matbotics/)
 
-### Installation (Unix systems)
+
+### Features
+
+- Get battery level, controller status, version, etc.
+- Control all servos
+- set speed of all motors
+- set motor target
+- read motors encoders value
+- timeout function
+
+### Installation (Unix like systems)
 
 Open a terminal and run :
 ```bash
@@ -52,16 +62,6 @@ void loop()
     delay( 600 ); 
 }
 ```
-
-### Working
-
- - Get battery level, controller status, version, etc.
- - Control all servos
- - set speed of all motors
- - set motor target
- - read motors encoders value
- - timeout function
-
 
 ### TODO
 
