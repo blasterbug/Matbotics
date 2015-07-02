@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Matbotics
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">An Arduino library to control Matrix Robotics Controller</div>
   </td>
@@ -81,55 +81,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Matbotics Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Matbotics is a Arduino library to control <a href="http://matrixrobotics.com/2014/10/09/controller-specification/">Matrix Robotics System controller</a></p>
-<p>The library is under <b>heavy</b> development!</p>
-<p>Matbotics uses <a href="http://dsscircuits.com/articles/arduino-i2c-master-library">Arduino I2C master library</a> to support "repeat start".</p>
-<p>Online documentation <a href="http://blasterbug.github.io/Matbotics/">here</a></p>
-<h3>Installation (Unix systems)</h3>
-<p>Open a terminal and run : </p><pre class="fragment">$ cd &lt;UserDirectory&gt;/Arduino/libraries
-$ git clone https://github.com/blasterbug/Matbotics.git
-</pre><p>Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino libraries menu.</p>
-<h3>Exemple</h3>
-<p>This exemple shows how to control a servo plugged to the port one </p><pre class="fragment">    // import libraries
-    #include &lt;Wire.h&gt;
-    #include &lt;Matbotics.h&gt;
-
-    // use the controller
-    MTController ctlr;
-
-    void setup()
-    {
-      // enable servos
-      ctlr.enableServos();
-      // switchoff timeout
-      ctlr.timeout( 0 );
-      // set a custom speed for the servo one
-      ctlr.servoOneSpeed( 5 );
-    }
-
-    // some variables
-    int angle = 0;
-
-    void loop()
-    {
-      // increase angle and stay in boundaries
-      angle = (angle + 10)%250;
-      // set the angle to the first servo
-      ctlr.servoOneAngle( angle );
-      delay( 600 ); 
-    }
-</pre><h3>Working</h3>
+<div class="textblock"><p>Matbotics is a Arduino library to control <a href="http://matrixrobotics.com/2014/10/09/controller-specification/">Matrix Robotics System controller</a>. Matbotics uses <a href="http://dsscircuits.com/articles/arduino-i2c-master-library">Arduino I2C master library</a> to support <em>repeat start</em>, because Wire library (issued with the Arduino IDE) does not.</p>
+<h3>Features</h3>
 <ul>
+<li>Get battery level, controller status, version, etc.</li>
 <li>Control all servos</li>
-<li>set speed of all motors</li>
-<li>timeout function</li>
+<li>Set speed of all motors</li>
+<li>Set motor target</li>
+<li>Read motors encoders value</li>
+<li>Timeout function</li>
 </ul>
-<h3>TODO</h3>
+<h3>Installation (Unix like systems)</h3>
+<p>Open a terminal and run : </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;$ cd &lt;UserDirectory&gt;/Arduino/libraries</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;$ git clone https://github.com/blasterbug/Matbotics.git</div>
+</div><!-- fragment --><p>Now after (re)starting the Arduino IDE you shloud see Matbotics in Arduino libraries menu.</p>
+<h3>Exemple</h3>
+<p>This exemple shows how to control a servo plugged to the port one</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;// import libraries</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;#include &lt;I2C.h&gt;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;#include &lt;Matbotics.h&gt;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;// use the controller</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;MTController ctlr;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;void setup()</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    // enable servos</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    ctlr.enableServos();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    // switchoff timeout</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ctlr.timeout( 0 );</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    // set a custom speed for the servo one</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    ctlr.servoOneSpeed( 5 );</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;// some variables</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;int angle = 0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;void loop()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    // increase angle and stay in boundaries</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    angle = (angle + 10)%250;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    // set the angle to the first servo</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ctlr.servoOneAngle( angle );</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    delay( 600 ); </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+</div><!-- fragment --><h3>TODO</h3>
 <ul>
-<li>Read I2C messages from controller (i.e. battery level, motors encoders postions, etc.)</li>
-<li>Exemples</li>
-<li>Optimization </li>
+<li>More exemples</li>
+<li>Optimization?</li>
 </ul>
+<h3>Connect Lego Mindstorms devices to Arduino boards</h3>
+<div class="image">
+<img src="http://blasterbug.github.io/Camduino/NXT_black_wire.png"  alt="NXT clipped off wire" title="NXT clipped off wire"/>
+</div>
+<p>NXT uses RJ12 wires made like this :</p>
+<ul>
+<li>white : analog</li>
+<li>black : ground</li>
+<li>red : ground</li>
+<li>green : 4.3V</li>
+<li>yellow : I2C clock line (<code>SCL</code>)</li>
+<li>blue : I2C data line (<code>SDA</code>)</li>
+</ul>
+<p>Connect the red and the black wire to Arduino ground pin, the yellow to a <code>SCL</code> pin and the blue one to a <code>SDA</code> pin. On Arduino boards this pins are clearly identified. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

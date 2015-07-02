@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Matbotics
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">An Arduino library to control Matrix Robotics Controller</div>
   </td>
@@ -181,11 +181,20 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a334b8c17255ec3a7fb94df263481f230"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230">MTBS_MOTOR_MODES</a> { <a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a58388fd29c512e64e06bd065a764f8ca">MTBS_MTR_MODE_FLOAT</a> = 0x0, 
+<tr class="memitem:a334b8c17255ec3a7fb94df263481f230"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230">MTBS_MOTOR_MODES</a> { <br />
+&#160;&#160;<a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a58388fd29c512e64e06bd065a764f8ca">MTBS_MTR_MODE_FLOAT</a> = 0, 
 <a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a9f4140917721d2caaa196cf2fa84d254">MTBS_MTR_MODE_BRAKE</a>, 
 <a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a3dd04ab891a0b868f2cdc9e43cf0ad0d">MTBS_MTR_MODE_SPEED</a>, 
-<a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a4fa80580b6982a3539e79ed9bba517d8">MTBS_MTR_MODE_SLEW</a>
+<a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a4fa80580b6982a3539e79ed9bba517d8">MTBS_MTR_MODE_SLEW</a>, 
+<br />
+&#160;&#160;<a class="el" href="_matbotics_8h.html#a334b8c17255ec3a7fb94df263481f230a36a459f6deef3a898065472d738a50c6">MTBS_MTR_MODE_RESET</a>
+<br />
  }<tr class="separator:a334b8c17255ec3a7fb94df263481f230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
+<tr class="memitem:a7498cbcaed1c9573f0b6866896ff3f1e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matbotics_8h.html#a7498cbcaed1c9573f0b6866896ff3f1e">MTBS_STATUS_VALUES</a> { <a class="el" href="_matbotics_8h.html#a7498cbcaed1c9573f0b6866896ff3f1ea2a588ba50d4522f23d5a167a38a09084">MTBS_STATUS_OK</a> = 0, 
+<a class="el" href="_matbotics_8h.html#a7498cbcaed1c9573f0b6866896ff3f1eaf14b8426d5c584786bd5eb9b86ca45e1">MTBS_STATUS_FAULT</a>, 
+<a class="el" href="_matbotics_8h.html#a7498cbcaed1c9573f0b6866896ff3f1ea9b788fc185aea2cb765ca5843496c1db">MTBS_STATUS_LOWBATT</a>
+ }<tr class="separator:a7498cbcaed1c9573f0b6866896ff3f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -199,9 +208,9 @@ Copyright</h1>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
 <h1><a class="anchor" id="infos"></a>
 File informations</h1>
-<dl class="section date"><dt>Date</dt><dd>2015/04/20 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015/06/10 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Benjamin Sientzoff </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.2 </dd></dl>
 
 <p>Definition in file <a class="el" href="_matbotics_8h_source.html">Matbotics.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -674,7 +683,7 @@ File informations</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>actived all servos Matrix Controller uses for bits to enable each one. SERVOS 1 2 3 4 0xF 1 1 1 1 </p>
+<p>actived all servos Matrix Controller uses for bits to enable each one. SERVOS 1 2 3 4 0xF = 1 1 1 1 </p>
 
 <p>Definition at line <a class="el" href="_matbotics_8h_source.html#l00073">73</a> of file <a class="el" href="_matbotics_8h_source.html">Matbotics.h</a>.</p>
 
@@ -720,7 +729,7 @@ File informations</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>motor modes </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>fix motor modes </dd></dl>
+<p>motor modes </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>read/set motor modes </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a334b8c17255ec3a7fb94df263481f230a58388fd29c512e64e06bd065a764f8ca"></a>MTBS_MTR_MODE_FLOAT&#160;</td><td class="fielddoc">
 <p>Float mode. </p>
@@ -734,9 +743,35 @@ File informations</h1>
 <tr><td class="fieldname"><a class="anchor" id="a334b8c17255ec3a7fb94df263481f230a4fa80580b6982a3539e79ed9bba517d8"></a>MTBS_MTR_MODE_SLEW&#160;</td><td class="fielddoc">
 <p>Slew mode. </p>
 </td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a334b8c17255ec3a7fb94df263481f230a36a459f6deef3a898065472d738a50c6"></a>MTBS_MTR_MODE_RESET&#160;</td><td class="fielddoc">
+<p>reset motor channel </p>
+</td></tr>
 </table>
 
 <p>Definition at line <a class="el" href="_matbotics_8h_source.html#l00114">114</a> of file <a class="el" href="_matbotics_8h_source.html">Matbotics.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7498cbcaed1c9573f0b6866896ff3f1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_matbotics_8h.html#a7498cbcaed1c9573f0b6866896ff3f1e">MTBS_STATUS_VALUES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Controller status </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a7498cbcaed1c9573f0b6866896ff3f1ea2a588ba50d4522f23d5a167a38a09084"></a>MTBS_STATUS_OK&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7498cbcaed1c9573f0b6866896ff3f1eaf14b8426d5c584786bd5eb9b86ca45e1"></a>MTBS_STATUS_FAULT&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7498cbcaed1c9573f0b6866896ff3f1ea9b788fc185aea2cb765ca5843496c1db"></a>MTBS_STATUS_LOWBATT&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="_matbotics_8h_source.html#l00130">130</a> of file <a class="el" href="_matbotics_8h_source.html">Matbotics.h</a>.</p>
 
 </div>
 </div>
