@@ -66,3 +66,22 @@ void loop()
 
 [Arduino I2C master library]: http://dsscircuits.com/articles/arduino-i2c-master-library
 [Matrix Robotics System controller]: http://matrixrobotics.com/2014/10/09/controller-specification/
+
+### Connect Lego Mindstorms devices to Arduino boards
+
+
+![NXT clipped off wire](http://blasterbug.github.io/Camduino/NXT_black_wire.png "NXT clipped off wire")
+
+NXT uses RJ12 wires made like this :
+
+-	white : analog
+-	black : ground
+-	red : ground
+-	green : 4.3V
+-	yellow : I2C clock line (`SCL`)
+-	blue : I2C data line (`SDA`)
+
+Connect the red and the black wire to Arduino ground pin, the yellow to a `SCL` pin 
+and the blue one to a `SDA` pin. On Arduino boards this pins are clearly identified.
+
+
